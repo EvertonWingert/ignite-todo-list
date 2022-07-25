@@ -7,22 +7,23 @@
 		task: Task;
 	}
 
-	defineProps<TasksProps>();
+	 defineProps<TasksProps>();
 	const emit = defineEmits(["complete", "remove"]);
 
-	function completeTask(id: string) {
+	function completeTask(id: number) {
 		return emit("complete", id);
 	}
 
-	function removeTask(id: string) {
+	function removeTask(id: number) {
 		return emit("remove", id);
 	}
+
 </script>
 
 <template>
-	<div class="task-item-container">
+	<div class="task-item-container" >
 		<div>
-			<BaseCheckbox class="checkbox" type="checkbox" @change="completeTask(task.id)" />
+			<BaseCheckbox class="checkbox" type="checkbox" :checked="task.isCompleted" @change="completeTask(task.id)"   />
 			<p>{{ task.title }}</p>
 		</div>
 		<TrashIcon role="button" class="remove-icon" @click="removeTask(task.id)" />
@@ -59,4 +60,5 @@
 	.task-item-container:hover {
 		border: 1px solid var(--purple-500);
 	}
+
 </style>

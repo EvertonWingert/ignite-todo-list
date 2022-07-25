@@ -24,7 +24,7 @@
 	}
 </script>
 
-<template scoped>
+<template>
 	<div class="task-container">
 		<div class="task-info-container">
 			<p class="info-text-created">
@@ -48,7 +48,7 @@
 		</Transition>
 	</div>
 </template>
-<style>
+<style scoped>
 	.task-container {
 		margin: 64px auto 0;
 		max-width: 736px;

@@ -2,26 +2,33 @@
 	import Header from "./components/Header.vue";
 	import TaskList from "./components/TaskList.vue";
 	import TaskForm from "./components/TaskForm.vue";
+  import {LocalStorageProvider} from "./provider/Localstorage";
 
-	import { Task } from "./entities/Task";
+  import { Task } from "./entities/Task";
 	import { ref } from "vue";
 
-	const tasks = ref<Task[]>([]);
+  const repository = new LocalStorageProvider();
+	const tasks = ref<Task[]>(repository.getAll());
 
 	function addTask(title: string) {
-		const id = new Date().getTime().toString();
+		const id = new Date().getTime();
 		const newTask: Task = { id, title: title, isCompleted: false };
 		tasks.value.push(newTask);
-	}
-	function removeTask(id: string) {
-		tasks.value = tasks.value.filter((task) => task.id !== id);
+    repository.create(newTask);
 	}
 
-	function completeTask(id: string) {
+	function removeTask(id: number) {
+		tasks.value = tasks.value.filter((task) => task.id !== id);
+    repository.delete(id);
+	}
+
+	function completeTask(id: number) {
 		const task = tasks.value.find((task) => task.id === id);
 		if (task) {
 			task.isCompleted = !task.isCompleted;
+      repository.update(task.id, task);
 		}
+
 	}
 </script>
 

@@ -1,13 +1,16 @@
 <script setup lang="ts">
-	interface TasksProps {
-		modelValue?: string;
+
+  interface TasksProps {
+		modelValue?: boolean;
 	}
 
 	defineProps<TasksProps>();
-	defineEmits(["update:modelValue"]);
+  defineEmits(["update:modelValue"]);
+
+
 </script>
 <template>
-	<input class="checkbox" type="checkbox" v-bind="$attrs" />
+	<input class="checkbox" type="checkbox"  />
 </template>
 <style scoped>
 	.checkbox {
