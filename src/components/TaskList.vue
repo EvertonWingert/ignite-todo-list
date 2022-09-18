@@ -1,27 +1,27 @@
 <script setup lang="ts">
-	import { computed } from "vue";
-	import { Task } from "../entities/Task";
-	import EmptyTask from "./EmptyTask.vue";
-	import TaskItem from "./TaskItem.vue";
+import { computed } from "vue";
+import { Task } from "../entities/Task";
+import EmptyTask from "./EmptyTask.vue";
+import TaskItem from "./TaskItem.vue";
 
-	interface TasksProps {
-		tasks: Task[];
-	}
+interface TasksProps {
+	tasks: Task[];
+}
 
-	const props = defineProps<TasksProps>();
+const props = defineProps<TasksProps>();
 
-	const totalTasksCreated = computed(() => props.tasks?.length);
-	const totalTasksDone = computed(() => props.tasks?.reduce((acc, cur) => acc + Number(cur.isCompleted), 0));
+const totalTasksCreated = computed(() => props.tasks?.length);
+const totalTasksDone = computed(() => props.tasks?.reduce((acc, cur) => acc + Number(cur.isCompleted), 0));
 
-	const emit = defineEmits(["on-complete", "on-remove"]);
+const emit = defineEmits(["on-complete", "on-remove"]);
 
-	function completeTask(id: string) {
-		return emit("on-complete", id);
-	}
+function completeTask(id: string) {
+	return emit("on-complete", id);
+}
 
-	function removeTask(id: string) {
-		return emit("on-remove", id);
-	}
+function removeTask(id: string) {
+	return emit("on-remove", id);
+}
 </script>
 
 <template>
@@ -49,65 +49,65 @@
 	</div>
 </template>
 <style scoped>
-	.task-container {
-		margin: 64px auto 0;
-		max-width: 736px;
-	}
+.task-container {
+	margin: 64px auto 0;
+	max-width: 736px;
+}
 
-	.task-info-container {
-		display: flex;
-		justify-content: space-between;
-		max-width: 736px;
-		margin: 0 auto;
-	}
+.task-info-container {
+	display: flex;
+	justify-content: space-between;
+	max-width: 736px;
+	margin: 0 auto;
+}
 
-	.info-text-created {
-		font-weight: bold;
-		color: var(--blue-500);
-	}
+.info-text-created {
+	font-weight: bold;
+	color: var(--blue-500);
+}
 
-	.info-text-done {
-		font-weight: bold;
-		color: var(--purple-500);
-	}
+.info-text-done {
+	font-weight: bold;
+	color: var(--purple-500);
+}
 
-	.task-info-counter {
-		color: var(--gray-200);
-		background-color: var(--gray-400);
-		padding: 2px 8px;
-		border-radius: 9999px;
-	}
+.task-info-counter {
+	color: var(--gray-200);
+	background-color: var(--gray-400);
+	padding: 2px 8px;
+	border-radius: 9999px;
+}
 
-	.task-list-container {
-		margin-top: 24px;
-		display: flex;
-		flex-direction: column;
-		gap: 12px;
-	}
+.task-list-container {
+	margin-top: 24px;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
 
-	.list-move,
-	.list-enter-active,
-	.list-leave-active {
-		transition: all 0.5s ease;
-	}
+.list-move,
+.list-enter-active,
+.list-leave-active {
+	transition: all 0.5s ease;
+}
 
-	.list-enter-from,
-	.list-leave-to {
-		opacity: 0;
-		transform: translateX(30px);
-	}
+.list-enter-from,
+.list-leave-to {
+	opacity: 0;
+	transform: translateX(30px);
+}
 
-	.list-leave-active {
-		position: absolute;
-	}
+.list-leave-active {
+	position: absolute;
+}
 
-	.v-enter-active,
-	.v-leave-active {
-		transition: opacity 0.5s ease;
-	}
+.v-enter-active,
+.v-leave-active {
+	transition: opacity 0.5s ease;
+}
 
-	.v-enter-from,
-	.v-leave-to {
-		opacity: 0;
-	}
+.v-enter-from,
+.v-leave-to {
+	opacity: 0;
+}
 </style>

@@ -1,19 +1,19 @@
 <script setup lang="ts">
-	import BaseButton from "./BaseButton.vue";
-	import BaseInput from "./BaseInput.vue";
+import BaseButton from "./BaseButton.vue";
+import BaseInput from "./BaseInput.vue";
 
-	const emit = defineEmits(["on-create"]);
+const emit = defineEmits(["on-create"]);
 
-	function submit(event: Event) {
-		const target = event.target as HTMLFormElement;
+function submit(event: Event) {
+	const target = event.target as HTMLFormElement;
 
-		const form = new FormData(target);
-		const name = form.get("title");
+	const form = new FormData(target);
+	const name = form.get("title");
 
-		emit("on-create", name);
+	emit("on-create", name);
 
-		target.reset();
-	}
+	target.reset();
+}
 </script>
 
 <template>
@@ -25,13 +25,13 @@
 	</div>
 </template>
 <style scoped>
-	.add-task-container {
-		max-width: 736px;
-		margin: 0 auto;
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-		height: 54px;
-		margin-top: calc((54px / 2) * -1);
-	}
+.add-task-container {
+	max-width: 736px;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	height: 54px;
+	margin-top: calc((54px / 2) * -1);
+}
 </style>

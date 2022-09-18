@@ -1,9 +1,9 @@
-import {Task} from "../entities/Task";
+import { Task } from "../entities/Task";
 
-export class LocalStorageProvider  {
+export class LocalStorageProvider {
     private readonly storageKey = "tasks";
 
-     getAll(): Task[] {
+    getAll(): Task[] {
         const tasks = localStorage.getItem(this.storageKey);
         if (tasks) {
             return JSON.parse(tasks);

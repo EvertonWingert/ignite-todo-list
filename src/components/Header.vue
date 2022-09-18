@@ -5,17 +5,17 @@
 	</header>
 </template>
 <style style="scoped">
-	.header-container {
-		width: 100%;
-		height: 200px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		background-color: var(--gray-700);
-	}
+.header-container {
+	width: 100%;
+	height: 200px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--gray-700);
+}
 
-	.img-logo {
-		width: 126px;
-		height: 48px;
-	}
+.img-logo {
+	width: 126px;
+	height: 48px;
+}
 </style>
