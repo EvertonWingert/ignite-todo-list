@@ -38,14 +38,12 @@ function removeTask(id: string) {
 				</span>
 			</p>
 		</div>
-		<Transition>
+		
 			<EmptyTask v-if="!tasks.length" />
-			<TransitionGroup v-else name="list" tag="div" class="task-list-container" mode="out-in">
-				<div v-for="task in tasks" :key="task?.id">
-					<TaskItem :task="task" @complete="completeTask" @remove="removeTask" />
-				</div>
-			</TransitionGroup>
-		</Transition>
+			<div v-for="task in tasks" :key="task?.id" class="task-list-container">
+				<TaskItem :task="task" @complete="completeTask" @remove="removeTask" />
+			</div>
+		
 	</div>
 </template>
 <style scoped>
@@ -79,7 +77,7 @@ function removeTask(id: string) {
 }
 
 .task-list-container {
-	margin-top: 24px;
+	margin-top: 14px;
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
